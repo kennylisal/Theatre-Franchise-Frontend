@@ -15,5 +15,6 @@ interface MovieObject {
   movie_duration: number;
   movie_image: string;
   movie_name: string;
+  movie_id: string;
 }
 export type { MovieDisplay, MovieObject };

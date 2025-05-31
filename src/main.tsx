@@ -1,12 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-// import MoviesView from "./public/movies/index.tsx";
-// import MovieScheduleView from "./admin/movie-schedule/index.tsx";
-import PercobaanView from "./admin/movie-schedule/percobaan.tsx";
+import MovieScheduleView from "./admin/movie-schedule/index.tsx";
+import SnackBarProvider from "./admin/global/snackbar-provider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <PercobaanView />
+    <SnackBarProvider>
+      <MovieScheduleView />
+    </SnackBarProvider>
   </StrictMode>
 );
