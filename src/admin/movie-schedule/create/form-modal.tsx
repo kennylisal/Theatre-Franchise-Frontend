@@ -1,11 +1,7 @@
 import {
   Box,
   Button,
-  Card,
-  CardActionArea,
-  CardMedia,
   Modal,
-  Skeleton,
   Stack,
   TextField,
   Typography,
@@ -25,10 +21,13 @@ import type {
 import type { MovieObject } from "../../../public/movies/interfaces";
 import CircularLoading from "../../global/circularLoading";
 import SnackBarContext from "../../global/snackbar-context";
-
-import { sendNewSchedule } from "../services/model";
+import { sendNewSchedule } from "./services";
+import {
+  GenerateMovieListSkeleton,
+  GenerateMoviesForModal,
+} from "./modal-component";
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1500));
-function FormModal({
+function FormModalCreate({
   open,
   handleClose,
   movieData,
@@ -57,10 +56,6 @@ function FormModal({
     });
     setFilmPilihan(index);
   };
-
-  // const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({
@@ -167,114 +162,6 @@ function FormModal({
   );
 }
 
-const generateMoviesForModal = (
-  datas: MovieObject[],
-  isTerpilih: number,
-
-  handleClickMovie: (arg1: number, arg2: MovieObject) => void
-) =>
-  datas.map((data, index) => (
-    <ActiveMovieItem
-      key={data.movie_id}
-      durasi={data.movie_duration}
-      imgSource={data.movie_image}
-      judul={data.movie_name}
-      isTerpilih={isTerpilih === index ? "" : undefined}
-      onClickMovie={() => handleClickMovie(index, data)}
-    />
-  ));
-
-const generateMovieListSkeleton = (
-  <>
-    <ActiveMovieSkeleton />
-    <ActiveMovieSkeleton />
-    <ActiveMovieSkeleton />
-    <ActiveMovieSkeleton />
-  </>
-);
-
-function ActiveMovieItem({
-  judul,
-  durasi,
-  imgSource,
-  isTerpilih,
-  onClickMovie,
-}: {
-  judul: string;
-  durasi: number;
-  imgSource: string;
-  isTerpilih: string | undefined;
-  onClickMovie: () => void;
-}) {
-  return (
-    <Card
-      elevation={3}
-      sx={{ display: "flex", height: "60px", marginY: "6px" }}
-    >
-      <CardActionArea
-        data-active={isTerpilih}
-        onClick={onClickMovie}
-        sx={{
-          display: "flex",
-          height: "100%",
-          "&[data-active]": {
-            backgroundColor: "action.selected",
-            "&:hover": {
-              backgroundColor: "action.selectedHover",
-            },
-          },
-        }}
-      >
-        <Box sx={{ width: "20%" }}>
-          <CardMedia
-            component="img"
-            sx={{ height: "100%" }}
-            image={imgSource}
-          />
-        </Box>
-        <Stack direction="column" marginX="10px" sx={{ width: "80%" }}>
-          <Typography
-            variant="body1"
-            align="justify"
-            color="primary"
-            overflow="clip"
-          >
-            {judul}
-          </Typography>
-          <Typography variant="body1" align="justify">
-            Durasi : {durasi} Menit
-          </Typography>
-        </Stack>
-      </CardActionArea>
-    </Card>
-  );
-}
-
-function ActiveMovieSkeleton() {
-  return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="center"
-      width="auto"
-      marginBottom="10px"
-    >
-      <Box sx={{ width: "20%", height: "65px", marginRight: "10px" }}>
-        <Skeleton
-          variant="rectangular"
-          height="100%"
-          width="70px"
-          sx={{ marginBottom: "10px" }}
-        />
-      </Box>
-      <Stack direction="column" width="80%" spacing={1.5}>
-        <Skeleton variant="rectangular" width="auto" height={20} />
-        <Skeleton variant="rectangular" width="60px" height={20} />
-      </Stack>
-    </Stack>
-  );
-}
-
 const MainContent = ({
   formData,
   handleInputChange,
@@ -323,8 +210,8 @@ const MainContent = ({
       }}
     >
       {movieDataHasLoad
-        ? generateMoviesForModal(movieData, filmPilihan, handleClickMovie)
-        : generateMovieListSkeleton}
+        ? GenerateMoviesForModal(movieData, filmPilihan, handleClickMovie)
+        : GenerateMovieListSkeleton}
     </Box>
     <TextField
       fullWidth
@@ -384,4 +271,4 @@ const MainContent = ({
   </>
 );
 
-export default FormModal;
+export default FormModalCreate;

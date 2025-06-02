@@ -7,7 +7,10 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import type { CinemaScheduleHeader } from "../interfaces/interfaces";
+import type {
+  CinemaScheduleHeader,
+  NewScheduleType,
+} from "../interfaces/interfaces";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import InfoIcon from "@mui/icons-material/Info";
 import type React from "react";
@@ -23,7 +26,6 @@ function HeaderSection({
   handleModalOpen: () => void;
 }) {
   const openModalHandler = () => {
-    console.log(cinemaId);
     setSelectedCinema(cinemaId);
     handleModalOpen();
   };
@@ -182,10 +184,14 @@ function ScheduleContent({
   handleModalOpen,
   scheduleData,
   setSelectedCinema,
+  setSelectedUpdateMovie,
+  handleOpenModalUpdate,
 }: {
   handleModalOpen: () => void;
   scheduleData: Map<string, CinemaScheduleHeader>;
   setSelectedCinema: React.Dispatch<React.SetStateAction<string>>;
+  handleOpenModalUpdate: () => void;
+  setSelectedUpdateMovie: (args1: NewScheduleType) => void;
 }) {
   const display = Array.from(scheduleData.keys()).map((key) => {
     const CinemaMovies =
@@ -204,12 +210,25 @@ function ScheduleContent({
           {scheduleData.get(key)?.detail.map((data) => (
             <MovieScheduleGridItem
               key={data.movie_schedule_id}
-              judul={data.movie_name ?? "error"}
-              awalTayang={data.started_at?.substring(11, 16) ?? "error"}
-              akhirTayang={data.end_at?.substring(11, 16) ?? "error"}
+              judul={data.movieName ?? "error"}
+              awalTayang={data.timeStart?.substring(11, 16) ?? "error"}
+              akhirTayang={data.timeEnd?.substring(11, 16) ?? "error"}
               harga={data.price?.toString() ?? "error"}
-              imgSrc={data.movie_image}
-              onClick={() => {}}
+              imgSrc={data.movieImage ?? ""}
+              onClick={() => {
+                const movieProp: NewScheduleType = {
+                  movieId: data.movieId ?? "error",
+                  movieName: data.movieName ?? "error",
+                  price: data.price ?? -1,
+                  timeStart: data.timeStart,
+                  timeEnd: data.timeEnd,
+                  movieImage: data.movieImage ?? "error",
+                  cinema: key,
+                  movie_schedule_id: data.movie_schedule_id,
+                };
+                setSelectedUpdateMovie(movieProp);
+                handleOpenModalUpdate();
+              }}
             />
           ))}
         </Grid>

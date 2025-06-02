@@ -1,7 +1,7 @@
 import type { Dayjs } from "dayjs";
 import type { MovieObject } from "../../../public/movies/interfaces";
 
-interface FormModalProps {
+interface FormModalCreateProps {
   open: boolean;
   handleOpen: () => void;
   handleClose: () => void;
@@ -11,6 +11,17 @@ interface FormModalProps {
   setScheduleData: React.Dispatch<
     React.SetStateAction<Map<string, CinemaScheduleHeader>>
   >;
+}
+
+interface FormModalUpdateProps {
+  open: boolean;
+  handleOpen: () => void;
+  handleClose: () => void;
+  setScheduleData: React.Dispatch<
+    React.SetStateAction<Map<string, CinemaScheduleHeader>>
+  >;
+  movieProp: NewScheduleType | undefined;
+  movieData: MovieObject[];
 }
 
 interface ScheduleMovieProp {
@@ -25,23 +36,12 @@ interface ScheduleMovieProp {
 interface ModalDataProp {
   open: boolean;
   movieDataHasLoad: boolean;
-  movieData: MovieObject[];
 }
 
 interface CinemaScheduleHeader {
   cinema_id: string;
   cinema_name: string;
   detail: NewScheduleType[];
-}
-
-interface CinemaSchduleDetail {
-  movie: string | null;
-  started_at: string | null;
-  end_at: string | null;
-  price: number | null;
-  movie_schedule_id: string | null;
-  movie_name: string | null;
-  movie_image: string;
 }
 
 interface CinemaScheduleData {
@@ -72,19 +72,13 @@ interface CreateRequestResponse {
   isSuccessful: boolean;
 }
 
-// interface MovieData {
-//   nama: string;
-//   durasi: number;
-//   image: string;
-// }
-
 export {
-  type FormModalProps,
+  type FormModalCreateProps as FormModalProps,
   type ScheduleMovieProp,
   type ModalDataProp,
   type CinemaScheduleHeader,
   type CinemaScheduleData,
   type NewScheduleType,
   type CreateRequestResponse,
-  type CinemaSchduleDetail,
+  type FormModalUpdateProps,
 };
