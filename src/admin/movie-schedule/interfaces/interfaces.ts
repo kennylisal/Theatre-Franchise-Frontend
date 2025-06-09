@@ -11,6 +11,7 @@ interface FormModalCreateProps {
   setScheduleData: React.Dispatch<
     React.SetStateAction<Map<string, CinemaScheduleHeader>>
   >;
+  tglPilihan: Dayjs;
 }
 
 interface FormModalUpdateProps {

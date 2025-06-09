@@ -70,8 +70,8 @@ function FormModalUpdate({
 
 const MainContent = ({
   movieData,
-  handleClose,
   movieProp,
+  handleClose,
   setScheduleData,
   setIsSendingData,
 }: {

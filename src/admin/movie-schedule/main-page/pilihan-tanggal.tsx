@@ -74,7 +74,9 @@ const PilihanTanggalAtas = (
         <Typography fontWeight="bold">{day.format("MMM")}</Typography>
         <Typography fontWeight="bold">{day.format("ddd")}</Typography>
       </Stack>
-      <Typography variant="h3">{day.date()}</Typography>
+      <Typography variant="h3">{`${
+        day.date() < 10 ? "0" : ""
+      }${day.date()}`}</Typography>
     </Stack>
   );
   return terpilih ? (

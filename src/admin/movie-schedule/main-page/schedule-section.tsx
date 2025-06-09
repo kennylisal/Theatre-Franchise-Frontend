@@ -69,7 +69,7 @@ function MovieScheduleGridItem({
         <Stack direction="row" paddingX={1.5} paddingY={1.5}>
           <img
             style={{
-              height: "160px",
+              height: "170px",
               objectFit: "fill",
               borderRadius: "8px",
             }}
@@ -141,8 +141,16 @@ function MovieScheduleGridItem({
                 {harga}
               </Typography>
             </Box>
-            <Button variant="contained" color="primary" onClick={onClick}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onClick}
+              sx={{ marginY: "4px" }}
+            >
               Edit
+            </Button>
+            <Button variant="contained" color="secondary" onClick={onClick}>
+              Seating
             </Button>
           </Stack>
         </Stack>

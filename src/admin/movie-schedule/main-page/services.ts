@@ -34,7 +34,8 @@ const fetchModalMovies = async (
 const fetchCinemaScheduleData = async (
   setScheduleData: (
     value: React.SetStateAction<Map<string, CinemaScheduleHeader>>
-  ) => void
+  ) => void,
+  tglAwal: string
 ) => {
   try {
     const response = await axios.get(
@@ -42,11 +43,12 @@ const fetchCinemaScheduleData = async (
       {
         params: {
           theatreLocation: "xxaxx",
-          timeStart: "2025-05-16T00:00:00",
-          timeEnd: "2025-05-16T23:59:59",
+          timeStart: `${tglAwal}T00:00:00`,
+          timeEnd: tglAwal + "T23:59:59",
         },
       }
     );
+    // console.log(response.data);
     if (response.status == 200) {
       const myMap = new Map<string, CinemaScheduleHeader>();
       (response.data as CinemaScheduleData[]).forEach((e) => {

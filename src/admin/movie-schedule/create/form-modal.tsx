@@ -11,7 +11,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
 import type {
   FormModalProps,
@@ -29,11 +29,12 @@ import {
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1500));
 function FormModalCreate({
   open,
-  handleClose,
   movieData,
   movieDataHasLoad,
   cinemaId,
+  handleClose,
   setScheduleData,
+  tglPilihan,
 }: FormModalProps) {
   const [formData, setFormData] = useState<ScheduleMovieProp>({
     movieName: "",
@@ -155,6 +156,7 @@ function FormModalCreate({
             setAwalTayang={setAwalTayang}
             setAkhirTayang={setAkhirTayang}
             handleClose={handleClose}
+            tglPilihan={tglPilihan}
           />
         )}
       </Box>
@@ -164,22 +166,24 @@ function FormModalCreate({
 
 const MainContent = ({
   formData,
-  handleInputChange,
-  handleSubmit,
   movieData,
   movieDataHasLoad,
   filmPilihan,
+  tglPilihan,
+  handleInputChange,
+  handleSubmit,
   handleClickMovie,
   setAwalTayang,
   setAkhirTayang,
   handleClose,
 }: {
   formData: ScheduleMovieProp;
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
   movieData: MovieObject[];
   movieDataHasLoad: boolean;
   filmPilihan: number;
+  tglPilihan: Dayjs;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
   handleClickMovie: (index: number, movieData: MovieObject) => void;
   setAwalTayang: (value: Dayjs | null) => void;
   setAkhirTayang: (value: Dayjs | null) => void;
@@ -238,7 +242,7 @@ const MainContent = ({
         <TimePicker
           label="Uncontrolled picker"
           name="awalWaktu"
-          defaultValue={dayjs().startOf("day")}
+          defaultValue={tglPilihan.startOf("day")}
           onChange={(newValue) => {
             setAwalTayang(newValue);
           }}
@@ -246,7 +250,7 @@ const MainContent = ({
         <TimePicker
           label="Controlled picker"
           name="akhirWaktu"
-          defaultValue={dayjs().startOf("day")}
+          defaultValue={tglPilihan.startOf("day")}
           onChange={(newValue) => {
             setAkhirTayang(newValue);
           }}
