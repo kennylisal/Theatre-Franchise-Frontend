@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
 import type { LoginRequestType } from "./interface";
-import wait from "../../global/wait";
+import wait from "../../global/loading-component/wait";
 import { adminLogin } from "./services";
-import SnackBarProvider from "../../global/snackbar-provider";
-import SnackBarContext from "../../global/snackbar-context";
+import SnackBarContext from "../../global/snackbar/snackbar-context";
+import { Navigate } from "react-router-dom";
 
 function LoginPage() {
   const dataAwal = {
@@ -27,8 +27,8 @@ function LoginPage() {
     setIsLoading(true);
     const payload = await adminLogin(formData.username, formData.password);
     if (payload.success) {
-      console.log(payload.payload.accessToken);
       showSnackBar("Berhasil login", "success");
+      return <Navigate to="/verifAccount" replace />;
     } else {
       showSnackBar("gagal login", "error");
     }

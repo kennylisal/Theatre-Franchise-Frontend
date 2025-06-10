@@ -26,8 +26,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import SnackBarContext from "../global/snackbar-context";
-import wait from "../global/wait";
+import SnackBarContext from "../global/snackbar/snackbar-context";
+import wait from "../global/loading-component/wait";
 import PilihanTanggal from "../movie-schedule/main-page/pilihan-tanggal";
 
 function WorkScheduleView() {

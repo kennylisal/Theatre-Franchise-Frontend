@@ -19,8 +19,8 @@ import type {
   ScheduleMovieProp,
 } from "../interfaces/interfaces";
 import type { MovieObject } from "../../../public/movies/interfaces";
-import CircularLoading from "../../global/circularLoading";
-import SnackBarContext from "../../global/snackbar-context";
+import CircularLoading from "../../global/loading-component/circularLoading";
+import SnackBarContext from "../../global/snackbar/snackbar-context";
 import { sendNewSchedule } from "./services";
 import {
   GenerateMovieListSkeleton,

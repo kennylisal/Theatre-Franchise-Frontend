@@ -6,7 +6,9 @@ import { AuthProvider } from "../auth/auth-provider/authProvider";
 import MovieScheduleView from "../movie-schedule";
 import ProtectedRoute from "./protected-route";
 import AdminBar from "../global/appbar/app-bar";
-import SnackBarProvider from "../global/snackbar-provider";
+
+import AuthVerificationPage from "../auth/verif-page";
+import SnackBarProvider from "../global/snackbar/snackbar-provider";
 
 function TheatreAdmin() {
   return (
@@ -17,6 +19,7 @@ function TheatreAdmin() {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/movies" element={<MoviesView />} />
+            <Route path="/verifAccount" element={<AuthVerificationPage />} />
             <Route
               path="/movieSchedule"
               element={

@@ -1,29 +1,28 @@
 import axios from "axios";
-import type { AuthTokensPayload } from "./interface";
 
 async function adminLogin(
   username: string,
   password: string
 ): Promise<{
   success: boolean;
-  payload: AuthTokensPayload;
+  message: string;
 }> {
   try {
     const body = {
       username: username,
       newPassword: password,
     };
-    console.log(body);
     const request = await axios.post("http://localhost:3000/auth/login", body);
+    const { message } = request.data as { message: string };
+    console.log(request);
     if (request.status === 200) {
-      const tokens: AuthTokensPayload = request.data;
-      return { success: true, payload: tokens };
+      return { success: true, message: message };
     } else {
-      return { success: false, payload: { accessToken: "", refreshToken: "" } };
+      return { success: false, message: message };
     }
   } catch (error) {
     console.log(error);
-    return { success: false, payload: { accessToken: "", refreshToken: "" } };
+    return { success: false, message: "Fatal Error" };
   }
 }
 

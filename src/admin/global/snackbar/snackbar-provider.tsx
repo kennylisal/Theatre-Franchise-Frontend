@@ -2,7 +2,7 @@ import { Button, IconButton, Snackbar } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import SnackBarContext from "./snackbar-context";
+import SnackBarContext from "./snackbar/snackbar-context";
 
 const SnackBarProvider = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);

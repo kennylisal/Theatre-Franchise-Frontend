@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import type { CreateEmployeeDataType, JenisEmployee } from "./interfaces";
 import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
-import SnackBarContext from "../global/snackbar-context";
+import SnackBarContext from "../global/snackbar/snackbar-context";
 import { requestAddEmployee } from "./services";
 
 function EmployeeView() {

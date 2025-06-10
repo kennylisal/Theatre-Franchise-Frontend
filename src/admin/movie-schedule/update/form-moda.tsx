@@ -14,12 +14,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import CircularLoading from "../../global/circularLoading";
+import CircularLoading from "../../global/loading-component/circularLoading";
 import SearchIcon from "@mui/icons-material/Search";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { GenerateMoviesForModal } from "../create/modal-component";
-import SnackBarContext from "../../global/snackbar-context";
+import SnackBarContext from "../../global/snackbar/snackbar-context";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateMovieSchedule } from "./services";
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1500));

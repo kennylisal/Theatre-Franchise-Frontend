@@ -9,7 +9,7 @@ import PilihanTanggal from "./main-page/pilihan-tanggal";
 import { MovieScheduleSkeleton } from "./main-page/skeleton";
 
 import { ScheduleContent } from "./main-page/schedule-section";
-import SnackBarContext from "../global/snackbar-context";
+import SnackBarContext from "../global/snackbar/snackbar-context";
 import FormModalCreate from "./create/form-modal";
 import {
   fetchCinemaScheduleData,
@@ -18,7 +18,7 @@ import {
 import FormModalUpdate from "./update/form-moda";
 import type { MovieObject } from "../../public/movies/interfaces";
 import dayjs, { Dayjs } from "dayjs";
-import wait from "../global/wait";
+import wait from "../global/loading-component/wait";
 
 function MovieScheduleView() {
   const isInitialRender = useRef(true);
