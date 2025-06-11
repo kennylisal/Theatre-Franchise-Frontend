@@ -4,7 +4,7 @@ import type {
   CinemaScheduleHeader,
   ModalDataProp,
 } from "../interfaces/interfaces";
-import type { MovieObject } from "../../../public/movies/interfaces";
+import type { MovieObject } from "../../../../src-user/public/movies/interfaces";
 
 const fetchModalMovies = async (
   modalData: ModalDataProp,

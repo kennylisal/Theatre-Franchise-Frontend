@@ -12,7 +12,9 @@ async function adminLogin(
       username: username,
       newPassword: password,
     };
-    const request = await axios.post("http://localhost:3000/auth/login", body);
+    const request = await axios.post("http://localhost:3000/auth/login", body, {
+      withCredentials: true,
+    });
     const { message } = request.data as { message: string };
     console.log(request);
     if (request.status === 200) {

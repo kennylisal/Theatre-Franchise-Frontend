@@ -1,5 +1,5 @@
 import type { Dayjs } from "dayjs";
-import type { MovieObject } from "../../../public/movies/interfaces";
+import type { MovieObject } from "../../../../src-user/public/movies/interfaces";
 
 interface FormModalCreateProps {
   open: boolean;

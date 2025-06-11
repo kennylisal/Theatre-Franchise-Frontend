@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import TheatreAdmin from "./admin/routing";
+import TheatreAdminRouter from "./admin/routing";
 import { BrowserRouter } from "react-router-dom";
 // import LoginPage from "./admin/auth/login";
 // import WorkScheduleView from "./admin/locket-schedule";
@@ -11,7 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <TheatreAdmin />
+      <TheatreAdminRouter />
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Typography, Grid, Container } from "@mui/material";
-import { AppBarCinemaRakyat } from "../global/app-bar";
 import SkeletonMovies from "./skeleton";
 import GridContainer from "./grid-container";
 import axios from "axios";
 import { generateMovieDisplayData } from "./utils";
 import type { MovieDisplay } from "./interfaces";
+import { AppBarCinemaRakyat } from "../../user/global/app-bar";
 
 // Main App component
 function MoviesView() {

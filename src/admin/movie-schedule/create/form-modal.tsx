@@ -18,7 +18,7 @@ import type {
   NewScheduleType,
   ScheduleMovieProp,
 } from "../interfaces/interfaces";
-import type { MovieObject } from "../../../public/movies/interfaces";
+import type { MovieObject } from "../../../../src-user/public/movies/interfaces";
 import CircularLoading from "../../global/loading-component/circularLoading";
 import SnackBarContext from "../../global/snackbar/snackbar-context";
 import { sendNewSchedule } from "./services";

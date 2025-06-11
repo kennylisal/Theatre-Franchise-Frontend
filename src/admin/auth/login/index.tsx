@@ -12,7 +12,7 @@ import type { LoginRequestType } from "./interface";
 import wait from "../../global/loading-component/wait";
 import { adminLogin } from "./services";
 import SnackBarContext from "../../global/snackbar/snackbar-context";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const dataAwal = {
@@ -22,13 +22,14 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { showSnackBar } = useContext(SnackBarContext);
   const [formData, setFormData] = useState<LoginRequestType>(dataAwal);
+  const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     const payload = await adminLogin(formData.username, formData.password);
     if (payload.success) {
       showSnackBar("Berhasil login", "success");
-      return <Navigate to="/verifAccount" replace />;
+      navigate("/verifAccount", { replace: true });
     } else {
       showSnackBar("gagal login", "error");
     }

@@ -4,7 +4,7 @@ import type {
   FormModalUpdateProps,
   NewScheduleType,
 } from "../interfaces/interfaces";
-import type { MovieObject } from "../../../public/movies/interfaces";
+import type { MovieObject } from "../../../../src-user/public/movies/interfaces";
 import dayjs, { Dayjs } from "dayjs";
 import {
   Box,

@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import type { MovieObject } from "../../../public/movies/interfaces";
+import type { MovieObject } from "../../../../src-user/public/movies/interfaces";
 
 const GenerateMoviesForModal = (
   datas: MovieObject[],

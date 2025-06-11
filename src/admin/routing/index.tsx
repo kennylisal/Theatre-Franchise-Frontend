@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "../auth/login";
-import MoviesView from "../../public/movies";
 import NotFound from "../global/not-found/not-found";
 import { AuthProvider } from "../auth/auth-provider/authProvider";
 import MovieScheduleView from "../movie-schedule";
@@ -9,8 +8,9 @@ import AdminBar from "../global/appbar/app-bar";
 
 import AuthVerificationPage from "../auth/verif-page";
 import SnackBarProvider from "../global/snackbar/snackbar-provider";
+import MoviesView from "../../public/movies";
 
-function TheatreAdmin() {
+function TheatreAdminRouter() {
   return (
     <AuthProvider>
       <div>
@@ -36,4 +36,4 @@ function TheatreAdmin() {
   );
 }
 
-export default TheatreAdmin;
+export default TheatreAdminRouter;
