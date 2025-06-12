@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
-import { SkeletonAppbar } from "../global/app-bar";
+import { SkeletonAppbar } from "../../user/global/app-bar";
 
 function SkeletonMovies() {
   return (

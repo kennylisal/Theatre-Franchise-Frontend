@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "../auth/login";
-import NotFound from "../global/not-found/not-found";
-import { AuthProvider } from "../auth/auth-provider/authProvider";
-import MovieScheduleView from "../movie-schedule";
+import LoginPage from "../admin/auth/login";
+import NotFound from "../admin/global/not-found/not-found";
+import { AuthProvider } from "../admin/auth/auth-provider/authProvider";
+import MovieScheduleView from "../admin/movie-schedule";
 import ProtectedRoute from "./protected-route";
-import AdminBar from "../global/appbar/app-bar";
+import AdminBar from "../admin/global/appbar/app-bar";
 
-import AuthVerificationPage from "../auth/verif-page";
-import SnackBarProvider from "../global/snackbar/snackbar-provider";
-import MoviesView from "../../public/movies";
+import AuthVerificationPage from "../admin/auth/verif-page";
+import SnackBarProvider from "../admin/global/snackbar/snackbar-provider";
+import MoviesView from "../public/movies";
+import EmployeeLocketkSchedule from "../employee/locket-scehdule";
+import UserSignUpPage from "../user/auth/signup";
 
 function TheatreAdminRouter() {
   return (
@@ -20,6 +22,11 @@ function TheatreAdminRouter() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/movies" element={<MoviesView />} />
             <Route path="/verifAccount" element={<AuthVerificationPage />} />
+            <Route path="/signUp" element={<UserSignUpPage />} />
+            <Route
+              path="/locketSchedule"
+              element={<EmployeeLocketkSchedule />}
+            />
             <Route
               path="/movieSchedule"
               element={
