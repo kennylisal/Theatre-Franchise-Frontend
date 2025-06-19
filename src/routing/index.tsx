@@ -11,6 +11,7 @@ import SnackBarProvider from "../admin/global/snackbar/snackbar-provider";
 import MoviesView from "../public/movies";
 import EmployeeLocketkSchedule from "../employee/locket-scehdule";
 import UserSignUpPage from "../user/auth/signup";
+import UserLogin from "../user/auth/login";
 
 function TheatreAdminRouter() {
   return (
@@ -22,7 +23,7 @@ function TheatreAdminRouter() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/movies" element={<MoviesView />} />
             <Route path="/verifAccount" element={<AuthVerificationPage />} />
-            <Route path="/signUp" element={<UserSignUpPage />} />
+
             <Route
               path="/locketSchedule"
               element={<EmployeeLocketkSchedule />}
@@ -35,7 +36,18 @@ function TheatreAdminRouter() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/user">
+              {/* harusnya ada verif-account disini */}
+              <Route path="signup" element={<UserSignUpPage />} />
+              <Route path="login" element={<UserLogin />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
+            {/* User Routes */}
+            {/* <Route path="/user" element={<UserLayout />}>
+              <Route index element={<UserHome />} />
+              <Route path="movies" element={<UserMovies />} />
+              <Route path="login" element={<UserLogin />} />
+            </Route> */}
           </Routes>
         </SnackBarProvider>
       </div>
