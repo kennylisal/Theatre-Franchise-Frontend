@@ -16,9 +16,9 @@ import {
   fetchModalMovies,
 } from "./main-page/services";
 import FormModalUpdate from "./update/form-moda";
-import type { MovieObject } from "../../../src-user/public/movies/interfaces";
 import dayjs, { Dayjs } from "dayjs";
 import wait from "../global/loading-component/wait";
+import type { MovieObject } from "../../public/movies/interfaces";
 
 function MovieScheduleView() {
   const isInitialRender = useRef(true);
