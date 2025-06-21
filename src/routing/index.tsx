@@ -13,6 +13,7 @@ import EmployeeLocketkSchedule from "../employee/locket-scehdule";
 import UserSignUpPage from "../user/auth/signup";
 import UserLogin from "../user/auth/login";
 import LocketTransaction from "../admin/locket-transaction";
+import CinemaLayoutMaker from "../admin/cinema_layout";
 
 function TheatreAdminRouter() {
   return (
@@ -31,6 +32,7 @@ function TheatreAdminRouter() {
               element={<EmployeeLocketkSchedule />}
             />
             <Route path="locketTransaction" element={<LocketTransaction />} />
+            <Route path="cinemaMaker" element={<CinemaLayoutMaker />} />
           </Route>
           <Route path="/user">
             {/* harusnya ada verif-account disini */}

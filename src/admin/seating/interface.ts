@@ -11,6 +11,7 @@ interface Seating {
   seat: string;
   status: "available" | "lane" | "unavailable" | "on-maintenance";
   seat_id: string;
+  rowName: string;
 }
 
 interface BuyedSeating {
